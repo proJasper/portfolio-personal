@@ -118,7 +118,9 @@
 					</div>
 				</div>
 				<div class="space-y-1">
-					<h3 class="text-sm font-semibold text-muted-foreground">Programming Languages & Technologies</h3>
+					<h3 class="text-sm font-semibold text-muted-foreground">
+						Programming Languages & Technologies
+					</h3>
 					<div class="flex flex-wrap gap-1">
 						{#each DATA.skills.technical as skill, id}
 							<BlurFade delay={BLUR_FADE_DELAY * id + 0.002}>
@@ -132,24 +134,6 @@
 	</section>
 	<section id="projects">
 		<div class="w-full space-y-12 py-12">
-			<BlurFade delay={BLUR_FADE_DELAY}>
-				<div class="flex flex-col items-center justify-center space-y-4 text-center">
-					<div class="space-y-2">
-						<div class="inline-block rounded-lg bg-foreground px-3 py-1 text-sm text-background">
-							My Projects
-						</div>
-						<h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">
-							Check out my latest work
-						</h2>
-						<p
-							class="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
-						>
-							I&apos;ve worked on a variety of projects, from simple websites to complex web
-							applications. Here are a few of my favorites.
-						</p>
-					</div>
-				</div>
-			</BlurFade>
 			<div class="mx-auto grid max-w-[800px] grid-cols-1 gap-3 sm:grid-cols-2">
 				{#each DATA.projects as project, id}
 					<BlurFade delay={BLUR_FADE_DELAY * 1.5 + id * 0.05}>
@@ -179,11 +163,14 @@
 					<p
 						class="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
 					>
-						Want to chat? Just shoot me a dm
-						<a href={DATA.contact.social.X.url} class="text-blue-500 hover:underline">
-							with a direct question on twitter
+						Want to chat? Simply shoot me a dm on
+						<a href={DATA.contact.social.LinkedIn.url} class="text-blue-500 hover:underline">
+							LinkedIn
 						</a>
-						and I&apos;ll respond whenever I can. I will ignore all soliciting.
+						or
+						<a href={DATA.contact.social.email.url} class="text-blue-500 hover:underline"
+							>send an email</a
+						>.
 					</p>
 				</div>
 			</BlurFade>
