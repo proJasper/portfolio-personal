@@ -3,14 +3,9 @@ import { CodeIcon, Github, Globe, HomeIcon, NotebookIcon, Youtube } from 'lucide
 import GithubSvg from '$lib/imgs/github.svg';
 import GithubDarkSvg from '$lib/imgs/github-dark.svg';
 
-import PeerListSvg from '$lib/imgs/peerlist.svg';
-import PeerListDarkSvg from '$lib/imgs/peerlist-dark.svg';
-
 import LinkedinSvg from '$lib/imgs/linkedin.svg';
 import LinkedinDarkSvg from '$lib/imgs/linkedin-dark.svg';
 
-import TwitterSvg from '$lib/imgs/x.svg';
-import TwitterDarkSvg from '$lib/imgs/x-dark.svg';
 import SendSvg from '$lib/imgs/send.svg';
 
 import FedExImg from '$lib/imgs/fedex.png';
@@ -24,10 +19,10 @@ import MeImg from '$lib/imgs/me-cropped.jpg';
 export let DATA = {
 	name: 'Jasper Robinson',
 	initials: 'JR',
-	url: 'https://github.com/SikandarJODD',
-	img: 'https://i.pinimg.com/736x/9e/dc/a6/9edca66eba199828bda2dbaf35642154.jpg',
-	location: 'Mumbai, India',
-	locationLink: 'https://www.google.com/maps/place/mumbai',
+	url: 'https://jasperrobinson.nl/',
+	img: '',
+	location: 'Eindhoven, Netherlands',
+	locationLink: 'https://www.google.com/maps/place/eindhoven',
 	description:
 		'I like building things and improving complex processes, especially in environments where things are messy or not fully connected.',
 	summary:
@@ -67,49 +62,16 @@ export let DATA = {
 		email: 'contact@jasperrobinson.nl',
 		tel: '',
 		social: {
-			GitHub: {
-				name: 'GitHub',
-				url: 'https://github.com/SikandarJODD/portfolio-template',
-				// // icon: Icons.github,
-				icon: GithubSvg,
-					navbar: false,
-				dark_icon: GithubDarkSvg
-			},
 			LinkedIn: {
 				name: 'LinkedIn',
 				url: 'https://www.linkedin.com/in/jasperrobinson/',
-				// // icon: Icons.linkedin,
 				icon: LinkedinSvg,
 				navbar: true,
 				dark_icon: LinkedinDarkSvg
 			},
-			X: {
-				name: 'X',
-				url: 'https://twitter.com/Sikandar_Bhide',
-				// // icon: Icons.x,
-				icon: TwitterSvg,
-					navbar: false,
-				dark_icon: TwitterDarkSvg
-			},
-			PeerList: {
-				name: 'PeerList',
-				url: 'https://peerlist.io/bhide',
-				// // icon: Icons.x,
-				icon: PeerListSvg,
-					navbar: false,
-				dark_icon: PeerListDarkSvg
-			},
-			// Youtube: {
-			// 	name: 'Youtube',
-			// 	url: 'https://github.com/SikandarJODD',
-			// 	// // icon: Icons.youtube,
-			// 	icon: Youtube,
-			// 	navbar: true
-			// },
 			email: {
 				name: 'Send Email',
 					url: 'mailto:contact@jasperrobinson.nl',
-				// // icon: Icons.email,
 					icon: SendSvg,
 					navbar: true,
 					dark_icon: SendSvg
