@@ -1,6 +1,5 @@
 <script>
 	import BlurFade from '$lib/components/magic/BlurFade.svelte';
-	import HackathonCard from '$lib/components/portfolio/HackathonCard.svelte';
 	import ProjectCard from '$lib/components/portfolio/ProjectCard.svelte';
 	import ResumeCard from '$lib/components/portfolio/ResumeCard.svelte';
 	import * as Avatar from '$lib/components/ui/avatar';
@@ -15,11 +14,12 @@
 	<meta name="description" content={DATA.description} />
 	<meta property="og:title" content={DATA.name} />
 	<meta property="og:description" content={DATA.description} />
-	<meta property="og:url" content={DATA.url} />
+	<meta property="og:url" content={DATA.contact.social.LinkedIn.url} />
 	<meta property="og:site_name" content={DATA.name} />
 	<meta property="og:image" content={DATA.img} />
 	<meta property="og:locale" content="en_US" />
 	<meta property="og:type" content="website" />
+	<link rel="canonical" href={DATA.contact.social.LinkedIn.url} />
 	<meta name="robots" content="index, follow" />
 	<meta
 		name="googlebot"
@@ -29,6 +29,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:image" content={DATA.img} />
 	<meta name="twitter:description" content={DATA.description} />
+	<meta name="twitter:url" content={DATA.contact.social.LinkedIn.url} />
 
 	<meta name="google-site-verification" content="your-google-verification-code" />
 	<meta name="yandex-verification" content="your-yandex-verification-code" />
@@ -41,11 +42,10 @@
 					<BlurFade
 						delay={BLUR_FADE_DELAY}
 						class="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
-						yOffset={8}>Hi, I'm Bhide 👋</BlurFade
+						yOffset={8}>Hi, I'm {DATA.name.split(' ')[0]} 👋</BlurFade
 					>
 					<BlurFade class="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY}
-						>Software Engineer turned Entrepreneur. I love building things and helping people. Very
-						active on Twitter.</BlurFade
+						>{DATA.description}</BlurFade
 					>
 				</div>
 				<BlurFade delay={BLUR_FADE_DELAY}>
@@ -91,9 +91,9 @@
 					<ResumeCard
 						href={edu.href}
 						logoUrl={edu.logoUrl}
+						logoClass={edu.logoClass || ''}
 						company={edu.school}
-						title={edu.school}
-						subtitle={edu.degree}
+						title={edu.degree}
 						start={edu.start}
 						end={edu.end}
 					/>
@@ -106,12 +106,27 @@
 			<BlurFade delay={BLUR_FADE_DELAY}>
 				<h2 class="text-xl font-bold">Skills</h2>
 			</BlurFade>
-			<div class="flex flex-wrap gap-1">
-				{#each DATA.skills as skill, id}
-					<BlurFade delay={BLUR_FADE_DELAY * id + 0.002}>
-						<Badge>{skill}</Badge>
-					</BlurFade>
-				{/each}
+			<div class="space-y-3">
+				<div class="space-y-1">
+					<h3 class="text-sm font-semibold text-muted-foreground">Operations & Management</h3>
+					<div class="flex flex-wrap gap-1">
+						{#each DATA.skills.operations as skill, id}
+							<BlurFade delay={BLUR_FADE_DELAY * id + 0.002}>
+								<Badge>{skill}</Badge>
+							</BlurFade>
+						{/each}
+					</div>
+				</div>
+				<div class="space-y-1">
+					<h3 class="text-sm font-semibold text-muted-foreground">Programming Languages & Technologies</h3>
+					<div class="flex flex-wrap gap-1">
+						{#each DATA.skills.technical as skill, id}
+							<BlurFade delay={BLUR_FADE_DELAY * id + 0.002}>
+								<Badge>{skill}</Badge>
+							</BlurFade>
+						{/each}
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -151,38 +166,6 @@
 					</BlurFade>
 				{/each}
 			</div>
-		</div>
-	</section>
-	<section id="hackathons">
-		<div class="w-full space-y-12 py-12">
-			<BlurFade delay={BLUR_FADE_DELAY}>
-				<div class="flex flex-col items-center justify-center space-y-4 text-center">
-					<div class="space-y-2">
-						<div class="inline-block rounded-lg bg-foreground px-3 py-1 text-sm text-background">
-							Hackathons
-						</div>
-						<h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">I like building things</h2>
-						<p
-							class="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
-						>
-							During my time in university, I attended{' '}
-							{DATA.hackathons.length}+ hackathons. People from around the country would come
-							together and build incredible things in 2-3 days. It was eye-opening to see the
-							endless possibilities brought to life by a group of motivated and passionate
-							individuals.
-						</p>
-					</div>
-				</div>
-			</BlurFade>
-			<BlurFade delay={BLUR_FADE_DELAY * 2}>
-				<ul class="mb-4 ml-4 divide-y divide-dashed border-l">
-					{#each DATA.hackathons as project}
-						<BlurFade delay={BLUR_FADE_DELAY}>
-							<HackathonCard {...project} />
-						</BlurFade>
-					{/each}
-				</ul>
-			</BlurFade>
 		</div>
 	</section>
 	<section id="contact">

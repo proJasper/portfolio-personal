@@ -1,61 +1,67 @@
 import { CodeIcon, Github, Globe, HomeIcon, NotebookIcon, Youtube } from 'lucide-svelte';
-// Navbar Icons
+
 import GithubSvg from '$lib/imgs/github.svg';
 import GithubDarkSvg from '$lib/imgs/github-dark.svg';
 
 import PeerListSvg from '$lib/imgs/peerlist.svg';
 import PeerListDarkSvg from '$lib/imgs/peerlist-dark.svg';
 
-import GmailSvg from '$lib/imgs/gmail.svg';
-import GmailDarkSvg from '$lib/imgs/gmail-dark.svg';
-
 import LinkedinSvg from '$lib/imgs/linkedin.svg';
 import LinkedinDarkSvg from '$lib/imgs/linkedin-dark.svg';
 
 import TwitterSvg from '$lib/imgs/x.svg';
 import TwitterDarkSvg from '$lib/imgs/x-dark.svg';
+import SendSvg from '$lib/imgs/send.svg';
 
-import AtomicImg from '$lib/imgs/atomic.png';
-import ShopifyImg from '$lib/imgs/shopify.svg';
-import NvidiaImg from '$lib/imgs/nvidia.png';
-import SplunkImg from '$lib/imgs/splunk.svg';
-import LimeImg from '$lib/imgs/lime.svg';
-import MitreMediaImg from '$lib/imgs/mitremedia.png';
-import BuildSpaceImg from '$lib/imgs/buildspace.jpg';
-import WaterLooImg from '$lib/imgs/waterloo.png';
-import LaurierImg from '$lib/imgs/laurier.png';
-import IBImg from '$lib/imgs/ib.png';
+import FedExImg from '$lib/imgs/fedex.png';
+import BluespaceImg from '$lib/imgs/bluespace.svg';
+import KnapenTrailersImg from '$lib/imgs/knapen-trailers.svg';
+import AvansImg from '$lib/imgs/avans.jpg';
+import FontysImg from '$lib/imgs/fontys.jpeg';
+import SummaImg from '$lib/imgs/summa.png';
+import MeImg from '$lib/imgs/me-cropped.jpg';
 
-// Your resume data
 export let DATA = {
-	name: 'Sikandar Bhide',
-	initials: 'SB',
+	name: 'Jasper Robinson',
+	initials: 'JR',
 	url: 'https://github.com/SikandarJODD',
 	img: 'https://i.pinimg.com/736x/9e/dc/a6/9edca66eba199828bda2dbaf35642154.jpg',
 	location: 'Mumbai, India',
 	locationLink: 'https://www.google.com/maps/place/mumbai',
 	description:
-		'Software Engineer turned Entrepreneur. I love building things and helping people. Very active on Twitter.',
+		'I like building things and improving complex processes, especially in environments where things are messy or not fully connected.',
 	summary:
-		'At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Sil// icon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).',
-	avatarUrl: 'https://i.pinimg.com/564x/df/d2/76/dfd276448eed0f2b6094d1cb2c9d0269.jpg',
-	skills: [
-		'Svelte',
-		'Sveltekit',
-		'Typescript',
-		'Node.js',
-		'Python',
-		'Go',
-		'Postgres',
-		'Docker',
-		'Kubernetes',
-		'Java',
-		'C++'
-	],
+		'My background lies in software-driven solutions for real-world operational challenges. In 2019 I founded and ran a SaaS company focused on Warehouse Management Systems, where we bridged the gap between digital tools and physical processes. That experience gave me a strong appreciation for operational complexity and how to improve it through systems thinking. I enjoy analyzing how processes work, identifying efficiencies, and translating that into practical improvements. My focus is on making systems more usable and reliable.',
+	avatarUrl: MeImg,
+	skills: {
+		operations: [
+			'IT Operations',
+			'Lean Six Sigma',
+			'Operations Management',
+			'Change Management',
+			'Process Engineering',
+			'Agile Methodologies'
+		],
+		technical: [
+			'PHP',
+			'TypeScript',
+			'Node.JS',
+			'Python',
+			'Postgres',
+			'Kubernetes',
+			'Docker',
+			'Java',
+			'C#',
+			'Kafka',
+			'GitHub Actions',
+			'Jenkins',
+			'AWS',
+			'Azure'
+		]
+	},
 	navbar: [
 		{ href: '/', icon: HomeIcon, label: 'Home' },
-		{ href: '/blog', icon: NotebookIcon, label: 'Blog' },
-		{ href: '#', icon: CodeIcon, label: 'Projects' }
+		{ href: '/blog', icon: NotebookIcon, label: 'Blog' }
 	],
 	contact: {
 		email: 'hello@example.com',
@@ -66,12 +72,12 @@ export let DATA = {
 				url: 'https://github.com/SikandarJODD/portfolio-template',
 				// // icon: Icons.github,
 				icon: GithubSvg,
-				navbar: true,
+					navbar: false,
 				dark_icon: GithubDarkSvg
 			},
 			LinkedIn: {
 				name: 'LinkedIn',
-				url: 'https://www.linkedin.com/in/sikandar-bhide/',
+				url: 'https://www.linkedin.com/in/jasperrobinson/',
 				// // icon: Icons.linkedin,
 				icon: LinkedinSvg,
 				navbar: true,
@@ -82,7 +88,7 @@ export let DATA = {
 				url: 'https://twitter.com/Sikandar_Bhide',
 				// // icon: Icons.x,
 				icon: TwitterSvg,
-				navbar: true,
+					navbar: false,
 				dark_icon: TwitterDarkSvg
 			},
 			PeerList: {
@@ -90,7 +96,7 @@ export let DATA = {
 				url: 'https://peerlist.io/bhide',
 				// // icon: Icons.x,
 				icon: PeerListSvg,
-				navbar: true,
+					navbar: false,
 				dark_icon: PeerListDarkSvg
 			},
 			// Youtube: {
@@ -102,120 +108,80 @@ export let DATA = {
 			// },
 			email: {
 				name: 'Send Email',
-				url: '#',
+					url: 'mailto:hello@example.com',
 				// // icon: Icons.email,
-				icon: GmailSvg,
-				navbar: false,
-				dark_icon: GmailDarkSvg
+					icon: SendSvg,
+					navbar: true,
+					dark_icon: SendSvg
 			}
 		}
 	},
 	work: [
 		{
-			company: 'Atomic Finance',
-			href: 'https://atomic.finance',
+			company: 'FedEx Express',
+			href: '',
 			badges: [],
-			location: 'Remote',
-			title: 'Bitcoin Protocol Engineer',
-			logoUrl: AtomicImg,
-			start: 'May 2021',
-			end: 'Oct 2022',
+			location: '',
+			title: 'Ops Support Agent - Advanced',
+			logoUrl: FedExImg,
+			logoClass: 'scale-75',
+			start: 'Jul 2024',
+			end: 'Now',
 			description:
-				'Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.'
+				'I work in clearance operations and perform analysis to measure customs compliance, implement tools that improve efficiency, reliability, and compliance of Standard Operations Procedures.'
 		},
 		{
-			company: 'Shopify',
+			company: 'Bluespace Holding',
 			badges: [],
-			href: 'https://shopify.com',
-			location: 'Remote',
-			title: 'Software Engineer',
-			logoUrl: ShopifyImg,
-			start: 'January 2021',
-			end: 'April 2021',
+			href: '',
+			location: '',
+			title: 'Founder & CEO',
+			logoUrl: BluespaceImg,
+			logoClass: 'scale-75',
+			start: 'Dec 2019',
+			end: 'Dec 2024',
 			description:
-				'Implemented a custom Kubernetes controller in Go to automate the deployment of MySQL and ProxySQL custom resources in order to enable 2,000+ internal developers to instantly deploy their app databases to production. Wrote several scripts in Go to automate MySQL database failovers while maintaining master-slave replication topologies and keeping Zookeeper nodes consistent with changes.'
+				'Founder of a SaaS company delivering solutions for e-commerce and hospitality sectors. Responsible for day-to-day operations, technical strategy and product architecture.'
 		},
 		{
-			company: 'Nvidia',
-			href: 'https://nvidia.com/',
+			company: 'Knapen Trailers',
+			href: '',
 			badges: [],
-			location: 'Santa Clara, CA',
-			title: 'Software Engineer',
-			logoUrl: NvidiaImg,
-			start: 'January 2020',
-			end: 'April 2020',
+			location: '',
+			title: 'Master Data Analyst',
+			logoUrl: KnapenTrailersImg,
+			logoClass: 'scale-75',
+			start: 'Jul 2022',
+			end: 'Sep 2023',
 			description:
-				'Architected and wrote the entire MVP of the GeForce Now Cloud Gaming internal admin and A/B testing dashboard using React, Redux, TypeScript, and Python.'
-		},
-		{
-			company: 'Splunk',
-			href: 'https://splunk.com',
-			badges: [],
-			location: 'San Jose, CA',
-			title: 'Software Engineer',
-			logoUrl: SplunkImg,
-			start: 'January 2019',
-			end: 'April 2019',
-			description:
-				'Co-developed a prototype iOS app with another intern in Swift for the new Splunk Phantom security orchestration product (later publicly demoed and launched at .conf annual conference in Las Vegas). Implemented a realtime service for the iOS app in Django (Python) and C++; serialized data using protobufs transmitted over gRPC resulting in an approximate 500% increase in data throughput.'
-		},
-		{
-			company: 'Lime',
-			href: 'https://li.me/',
-			badges: [],
-			location: 'San Francisco, CA',
-			title: 'Software Engineer',
-			logoUrl: LimeImg,
-			start: 'January 2018',
-			end: 'April 2018',
-			description:
-				'Proposed and implemented an internal ruby API for sending/receiving commands to scooters over LTE networks. Developed a fully automated bike firmware update system to handle asynchronous firmware updates of over 100,000+ scooters worldwide, and provide progress reports in real-time using React, Ruby on Rails, PostgreSQL and AWS EC2 saving hundreds of developer hours.'
-		},
-		{
-			company: 'Mitre Media',
-			href: 'https://mitremedia.com/',
-			badges: [],
-			location: 'Toronto, ON',
-			title: 'Software Engineer',
-			logoUrl: MitreMediaImg,
-			start: 'May 2017',
-			end: 'August 2017',
-			description:
-				'Designed and implemented a robust password encryption and browser cookie storage system in Ruby on Rails. Leveraged the Yahoo finance API to develop the dividend.com equity screener'
+				'Led a cross-functional project to improve Bill of Material accuracy, driving more efficient manufacturing and enabling precise financial insight into material usage and cost.'
 		}
 	],
 	education: [
 		{
-			school: 'Buildspace',
-			href: 'https://buildspace.so',
-			degree: 's3, s4, sf1, s5',
-			logoUrl: BuildSpaceImg,
-			start: '2023',
+			school: 'Avans University of Applied Sciences',
+			href: 'https://www.avans.nl',
+			degree: 'Logistics Management',
+			logoUrl: AvansImg,
+			logoClass: 'scale-75',
+			start: '2022',
 			end: '2024'
 		},
 		{
-			school: 'University of Waterloo',
-			href: 'https://uwaterloo.ca',
-			degree: "Bachelor's Degree of Computer Science (BCS)",
-			logoUrl: WaterLooImg,
-			start: '2016',
-			end: '2021'
+			school: 'Fontys University of Applied Sciences',
+			href: 'https://www.fontys.nl',
+			degree: 'Industrial Engineering',
+			logoUrl: FontysImg,
+			start: '2021',
+			end: '2022'
 		},
 		{
-			school: 'Wilfrid Laurier University',
-			href: 'https://wlu.ca',
-			degree: "Bachelor's Degree of Business Administration (BBA)",
-			logoUrl: LaurierImg,
-			start: '2016',
+			school: 'Summa College',
+			href: 'https://www.summacollege.nl',
+			degree: 'Intl. Engineering',
+			logoUrl: SummaImg,
+			start: '2017',
 			end: '2021'
-		},
-		{
-			school: 'International Baccalaureate',
-			href: 'https://ibo.org',
-			degree: 'IB Diploma',
-			logoUrl: IBImg,
-			start: '2012',
-			end: '2016'
 		}
 	],
 	projects: [

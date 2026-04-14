@@ -4,12 +4,13 @@
 	import { cn } from '$lib/utils';
 	import { ChevronRightIcon } from 'lucide-svelte';
 	import { quartOut } from 'svelte/easing';
-	import { slide } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 	export let logoUrl: string = '';
 	export let company: string = '';
 	export let title: string = '';
 	export let subtitle: string = '';
 	export let href: string = '';
+	export let logoClass: string = '';
 	export let badges: string[]=[''];
 	export let description: string = '';
 	export let start: string = '';
@@ -19,16 +20,34 @@
 	let handleClick = (e: MouseEvent) => {
 		if (description) {
 			e.preventDefault();
-			isExpanded = !isExpanded;
+		}
+	};
+
+	let handleMouseEnter = () => {
+		if (description) {
+			isExpanded = true;
+		}
+	};
+
+	let handleMouseLeave = () => {
+		if (description) {
+			isExpanded = false;
 		}
 	};
 </script>
 
-<a href={href || '#'} on:click={handleClick}>
+<a
+	href={href ? href : undefined}
+	on:click={handleClick}
+	on:mouseenter={handleMouseEnter}
+	on:mouseleave={handleMouseLeave}
+	on:focus={handleMouseEnter}
+	on:blur={handleMouseLeave}
+>
 	<div class="flex rounded-lg bg-card text-card-foreground">
 		<div class="flex-none">
 			<Avatar.Root class="bg-muted-background m-auto size-12 border dark:bg-foreground">
-				<Avatar.Image src={logoUrl} alt={company} class="object-contain" />
+				<Avatar.Image src={logoUrl} alt={company} class={cn('object-contain', logoClass)} />
 				<Avatar.Fallback>{company[0]}</Avatar.Fallback>
 			</Avatar.Root>
 		</div>
@@ -62,6 +81,9 @@
 				{#if title}
 					<div class="font-sans text-xs">{title}</div>
 				{/if}
+				{#if subtitle}
+					<div class="font-sans text-xs text-muted-foreground">{subtitle}</div>
+				{/if}
 			</div>
 			{#if description}
 				{#if isExpanded}
@@ -72,7 +94,9 @@
 							easing: quartOut
 						}}
 					>
-						{description}
+						<div in:fade={{ duration: 220 }} out:fade={{ duration: 180 }}>
+							{description}
+						</div>
 					</div>
 				{/if}
 			{/if}

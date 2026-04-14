@@ -47,7 +47,11 @@
 						<Button href={social.url} variant="ghost" size="icon" class="size-12 rounded-full">
 							<!-- <svelte:component this={social.icon} class="size-4" strokeWidth={1.5} /> -->
 							{#if social?.dark_icon && theme === 'dark'}
-								<img src={social?.dark_icon} class="size-4" alt={social.name} />
+								<img
+									src={social?.dark_icon}
+									class={social.name === 'Send Email' ? 'size-4 invert' : 'size-4'}
+									alt={social.name}
+								/>
 							{:else}
 								<img src={social.icon} class="size-[18px]" alt={social.name} />
 							{/if}
