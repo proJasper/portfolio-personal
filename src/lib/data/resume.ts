@@ -29,7 +29,6 @@ export let DATA = {
 		operations: [
 			'IT Operations',
 			'Lean Six Sigma',
-			'Operations Management',
 			'Change Management',
 			'Process Engineering',
 			'Agile Methodologies'
@@ -87,7 +86,7 @@ export let DATA = {
 			start: 'Jul 2024',
 			end: 'Now',
 			description:
-				'I work in clearance operations and perform analysis to measure customs compliance, implement tools that improve efficiency, reliability, and compliance of Standard Operations Procedures.'
+				'Supporting customs clearance operations in the Netherlands by enhancing compliance through process improvements and the implementation of tools that increase efficiency and accuracy.'
 		},
 		{
 			company: 'Bluespace Holding',
