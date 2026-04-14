@@ -2,8 +2,6 @@
 	import { marked } from 'marked';
 	import Badge from '../ui/badge/badge.svelte';
 
-	let _class = '';
-	export { _class as class };
 	export let title: string;
 	export let href: string = '';
 	export let description: string;
