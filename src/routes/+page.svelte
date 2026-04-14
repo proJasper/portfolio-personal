@@ -1,6 +1,5 @@
 <script>
 	import BlurFade from '$lib/components/magic/BlurFade.svelte';
-	import ProjectCard from '$lib/components/portfolio/ProjectCard.svelte';
 	import ResumeCard from '$lib/components/portfolio/ResumeCard.svelte';
 	import * as Avatar from '$lib/components/ui/avatar';
 	import Badge from '$lib/components/ui/badge/badge.svelte';
@@ -129,26 +128,6 @@
 						{/each}
 					</div>
 				</div>
-			</div>
-		</div>
-	</section>
-	<section id="projects">
-		<div class="w-full space-y-12 py-12">
-			<div class="mx-auto grid max-w-[800px] grid-cols-1 gap-3 sm:grid-cols-2">
-				{#each DATA.projects as project, id}
-					<BlurFade delay={BLUR_FADE_DELAY * 1.5 + id * 0.05}>
-						<ProjectCard
-							href={project.href}
-							title={project.title}
-							description={project.description}
-							dates={project.dates}
-							tags={project.technologies}
-							image={project.image}
-							video={project.video}
-							links={project.links}
-						/>
-					</BlurFade>
-				{/each}
 			</div>
 		</div>
 	</section>
