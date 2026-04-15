@@ -18,7 +18,6 @@
 	<meta property="og:image" content={DATA.img} />
 	<meta property="og:locale" content="en_US" />
 	<meta property="og:type" content="website" />
-	<link rel="canonical" href={DATA.contact.social.LinkedIn.url} />
 	<meta name="robots" content="index, follow" />
 	<meta
 		name="googlebot"
