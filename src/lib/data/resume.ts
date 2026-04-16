@@ -8,6 +8,7 @@ import SendSvg from '$lib/imgs/send.svg';
 import FedExImg from '$lib/imgs/fedex.png';
 import BluespaceImg from '$lib/imgs/bluespace.svg';
 import KnapenTrailersImg from '$lib/imgs/knapen-trailers.svg';
+import PhilipsImg from '$lib/imgs/philips.svg';
 import AvansImg from '$lib/imgs/avans.jpg';
 import FontysImg from '$lib/imgs/fontys.jpeg';
 import SummaImg from '$lib/imgs/summa.png';
@@ -113,6 +114,19 @@ export let DATA = {
 			end: 'Sep 2023',
 			description:
 				'Led a cross-functional project to improve Bill of Material accuracy, driving more efficient manufacturing and enabling precise financial insight into material usage and cost.'
+		},
+		{
+			company: 'Philips Medical Systems',
+			href: '',
+			badges: [],
+			location: '',
+			title: 'Industrial Engineer (Graduation Project)',
+			logoUrl: PhilipsImg,
+			logoClass: 'scale-75',
+			start: 'Feb 2021',
+			end: 'Sep 2021',
+			description:
+				'Led a production optimization initiative to resolve recurring quality issues that were impacting manufacturing yield. By leveraging Lean Six Sigma to identify key process inefficiencies, I developed and implemented targeted improvements that reduced defects and increased production efficiency.'
 		}
 	],
 	education: [

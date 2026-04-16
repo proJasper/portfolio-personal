@@ -1,6 +1,10 @@
 import { json } from '@sveltejs/kit';
 import type { Post } from '$lib/types';
 
+type PostFrontmatter = Omit<Post, 'slug' | 'categories'> & {
+	categories?: Post['categories'];
+};
+
 async function getPosts() {
 	let posts: Post[] = [];
 
@@ -11,8 +15,12 @@ async function getPosts() {
 		const slug = path.split('/').at(-1)?.replace('.md', '');
 
 		if (file && typeof file === 'object' && 'metadata' in file && slug) {
-			const metadata = file.metadata as Omit<Post, 'slug'>;
-			const post = { ...metadata, slug } satisfies Post;
+			const metadata = file.metadata as PostFrontmatter;
+			const post = {
+				...metadata,
+				slug,
+				categories: metadata.categories ?? []
+			} satisfies Post;
 			post.published && posts.push(post);
 		}
 	}

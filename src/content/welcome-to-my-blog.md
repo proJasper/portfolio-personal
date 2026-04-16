@@ -1,12 +1,11 @@
 ---
 title: Welcome To My Blog!
 
-description: The idea is to use this space as a journal; a place where...
+description: The idea is to use this space as a journal; a place where I document things I'm working on, challenges I run into, and how I approach solving them.
 
 date: '2026-04-14'
 
 categories:
-  - blog post
 
 published: true
 ---
