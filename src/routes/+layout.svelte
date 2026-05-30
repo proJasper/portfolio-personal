@@ -1,4 +1,5 @@
 <script>
+	import GoogleAnalytics from '$lib/components/GoogleAnalytics.svelte';
 	import Navbar from '$lib/components/portfolio/Navbar.svelte';
 	import { DATA } from '$lib/data/resume';
 	import '../app.css';
@@ -11,6 +12,7 @@
 </svelte:head>
 
 <ModeWatcher />
+<GoogleAnalytics />
 <div class="relative mx-auto min-h-screen max-w-2xl bg-background px-6 py-12 font-sans antialiased sm:py-24">
 	<slot></slot>
 	<Navbar />

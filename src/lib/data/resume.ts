@@ -23,6 +23,7 @@ export let DATA = {
 	ogImage: '/og.jpg',
 	img: '/og.jpg',
 	googleSiteVerification: 'S69EaWd4ZpDMRiTipeBqfsp-e8nY395jHh5Wh5xUdH4',
+	gaMeasurementId: 'G-VHWMR2K7B3',
 	location: 'Eindhoven, Netherlands',
 	locationLink: 'https://www.google.com/maps/place/eindhoven',
 	description:
