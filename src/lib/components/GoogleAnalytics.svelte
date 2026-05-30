@@ -8,9 +8,7 @@
 
 	onMount(() => {
 		if (!measurementId) return;
-
 		initAnalytics(measurementId);
-		trackPageView();
 	});
 
 	afterNavigate(({ to }) => {

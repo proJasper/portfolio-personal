@@ -20,7 +20,7 @@ export function initAnalytics(measurementId: string): void {
 	};
 
 	window.gtag('js', new Date());
-	window.gtag('config', measurementId, { send_page_view: false });
+	window.gtag('config', measurementId);
 
 	const script = document.createElement('script');
 	script.async = true;
