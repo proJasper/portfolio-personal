@@ -2,17 +2,22 @@
 	import Badge from '$lib/components/ui/badge/badge.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import Separator from '$lib/components/ui/separator/separator.svelte';
+	import Seo from '$lib/components/Seo.svelte';
+	import { DATA } from '$lib/data/resume';
 	import { formatDate } from '$lib/utils';
 
 	export let data;
+
+	$: pageTitle = `${data.meta.title} | ${DATA.name}`;
 </script>
 
-<!-- SEO -->
-<svelte:head>
-	<title>{data.meta.title}</title>
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content={data.meta.title} />
-</svelte:head>
+<Seo
+	title={pageTitle}
+	description={data.meta.description}
+	canonical="/blog/{data.meta.slug}"
+	ogType="article"
+	ogImage={DATA.ogImage}
+/>
 
 <div class="-mt-10">
 	<Button

@@ -1,47 +1,33 @@
 <script>
 	import BlurFade from '$lib/components/magic/BlurFade.svelte';
+	import ProjectCard from '$lib/components/portfolio/ProjectCard.svelte';
 	import ResumeCard from '$lib/components/portfolio/ResumeCard.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import * as Avatar from '$lib/components/ui/avatar';
 	import Badge from '$lib/components/ui/badge/badge.svelte';
 	import { DATA } from '$lib/data/resume';
+	import { personJsonLd, websiteJsonLd } from '$lib/seo';
 	import { marked } from 'marked';
 	let BLUR_FADE_DELAY = 0.04;
 </script>
 
-<svelte:head>
-	<title>{DATA.name}</title>
-	<meta name="description" content={DATA.description} />
-	<meta property="og:title" content={DATA.name} />
-	<meta property="og:description" content={DATA.description} />
-	<meta property="og:url" content={DATA.contact.social.LinkedIn.url} />
-	<meta property="og:site_name" content={DATA.name} />
-	<meta property="og:image" content={DATA.img} />
-	<meta property="og:locale" content="en_US" />
-	<meta property="og:type" content="website" />
-	<meta name="robots" content="index, follow" />
-	<meta
-		name="googlebot"
-		content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
-	/>
-	<meta name="twitter:title" content={DATA.name} />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:image" content={DATA.img} />
-	<meta name="twitter:description" content={DATA.description} />
-	<meta name="twitter:url" content={DATA.contact.social.LinkedIn.url} />
-
-	<meta name="google-site-verification" content="your-google-verification-code" />
-	<meta name="yandex-verification" content="your-yandex-verification-code" />
-</svelte:head>
+<Seo
+	title={DATA.seoTitle}
+	description={DATA.description}
+	canonical="/"
+	ogImage={DATA.ogImage}
+	jsonLd={[personJsonLd(), websiteJsonLd()]}
+/>
 <main class="flex min-h-[100dvh] flex-col space-y-10">
 	<section id="hero">
 		<div class="mx-auto w-full max-w-2xl space-y-8">
 			<div class="flex justify-between gap-2">
 				<div class="flex flex-1 flex-col space-y-1.5">
-					<BlurFade
-						delay={BLUR_FADE_DELAY}
-						class="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
-						yOffset={8}>Hi, I'm {DATA.name.split(' ')[0]} 👋</BlurFade
-					>
+					<BlurFade delay={BLUR_FADE_DELAY} yOffset={8}>
+						<h1 class="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+							Hi, I'm {DATA.name.split(' ')[0]} 👋
+						</h1>
+					</BlurFade>
 					<BlurFade class="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY}
 						>{DATA.description}</BlurFade
 					>
@@ -130,27 +116,44 @@
 			</div>
 		</div>
 	</section>
+	<section id="projects">
+		<div class="flex min-h-0 flex-col gap-y-3">
+			<BlurFade delay={BLUR_FADE_DELAY}>
+				<h2 class="text-xl font-bold">Latest Projects</h2>
+			</BlurFade>
+			<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+				{#each DATA.projects as project, id}
+					<BlurFade delay={BLUR_FADE_DELAY * 1.2 + id * 0.05}>
+						<ProjectCard
+							href={project.href}
+							title={project.title}
+							description={project.description}
+							dates={project.dates ?? ''}
+							tags={project.technologies}
+							image={project.image}
+							links={project.links ?? []}
+						/>
+					</BlurFade>
+				{/each}
+			</div>
+		</div>
+	</section>
 	<section id="contact">
-		<div class="grid w-full items-center justify-center gap-4 px-4 py-12 text-center md:px-6">
-			<BlurFade delay={BLUR_FADE_DELAY * 2}>
-				<div class="space-y-3">
-					<div class="inline-block rounded-lg bg-foreground px-3 py-1 text-sm text-background">
-						Contact
-					</div>
-					<h2 class="text-3xl font-bold tracking-tight sm:text-5xl">Get in Touch</h2>
-					<p
-						class="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
-					>
-						Want to chat? Simply shoot me a dm on
-						<a href={DATA.contact.social.LinkedIn.url} class="text-blue-500 hover:underline">
-							LinkedIn
-						</a>
-						or
-						<a href={DATA.contact.social.email.url} class="text-blue-500 hover:underline"
-							>send an email</a
-						>.
-					</p>
-				</div>
+		<div class="flex min-h-0 flex-col gap-y-3">
+			<BlurFade delay={BLUR_FADE_DELAY}>
+				<h2 class="text-xl font-bold">Get in Touch</h2>
+			</BlurFade>
+			<BlurFade delay={BLUR_FADE_DELAY * 1.4}>
+				<p class="text-pretty text-sm text-muted-foreground">
+					Want to chat? Simply shoot me a dm on
+					<a href={DATA.contact.social.LinkedIn.url} class="text-blue-500 hover:underline">
+						LinkedIn
+					</a>
+					or
+					<a href={DATA.contact.social.email.url} class="text-blue-500 hover:underline"
+						>send an email</a
+					>.
+				</p>
 			</BlurFade>
 		</div>
 	</section>

@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { formatDate } from '$lib/utils';
 	import BlurFade from '$lib/components/magic/BlurFade.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import Badge from '$lib/components/ui/badge/badge.svelte';
+	import { DATA } from '$lib/data/resume';
 	import type { Post } from '$lib/types';
 	type CategoryOption = 'All' | Post['categories'][number];
 
@@ -20,9 +22,12 @@
 	
 </script>
 
-<svelte:head>
-	<title>Blog</title>
-</svelte:head>
+<Seo
+	title={`Blog | ${DATA.name}`}
+	description="Notes on operations, software, and projects I'm working on."
+	canonical="/blog"
+	ogImage={DATA.ogImage}
+/>
 
 <BlurFade delay={BLUR_FADE_DELAY}>
 	<h1 class="mb-8 text-2xl font-medium tracking-tighter">Blog</h1>
