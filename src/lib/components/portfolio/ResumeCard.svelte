@@ -2,7 +2,7 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 	import { Badge } from '$lib/components/ui/badge';
 	import { cn } from '$lib/utils';
-	import { ChevronRightIcon } from 'lucide-svelte';
+	import { ChevronRightIcon, ChevronUpIcon } from 'lucide-svelte';
 	import { quartOut } from 'svelte/easing';
 	import { fade, slide } from 'svelte/transition';
 	export let logoUrl: string = '';
@@ -37,6 +37,7 @@
 </script>
 
 <a
+	class={cn(description ? 'cursor-default' : href ? 'cursor-pointer' : 'cursor-default')}
 	href={href ? href : undefined}
 	on:click={handleClick}
 	on:mouseenter={handleMouseEnter}
@@ -67,12 +68,18 @@
 								{/each}
 							</span>
 						{/if}
-						<ChevronRightIcon
-							class={cn(
-								'size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100',
-								isExpanded ? 'rotate-90' : 'rotate-0'
-							)}
-						/>
+						{#if description}
+							<ChevronUpIcon
+								class={cn(
+									'ml-2 size-4 shrink-0 transform opacity-0 transition-all duration-300 ease-out group-hover:opacity-100',
+									isExpanded ? 'rotate-180' : 'rotate-0'
+								)}
+							/>
+						{:else if href}
+							<ChevronRightIcon
+								class="ml-2 size-4 shrink-0 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100"
+							/>
+						{/if}
 					</h3>
 					<div class="text-right text-xs tabular-nums text-muted-foreground sm:text-sm">
 						{start} - {end || 'Present'}
