@@ -164,7 +164,6 @@ export let DATA = {
 		{
 			title: 'ENGIN',
 			href: '',
-			dates: '2024 - Present',
 			description:
 				'Shopify backend that processes webshop orders and forwards them to a third-party fulfilment API, with dashboards for stats, orders, products, refunds, and cancellations.',
 			technologies: ['Laravel', 'React', 'PostgreSQL', 'Redis', 'Docker', 'GitHub Actions'],
