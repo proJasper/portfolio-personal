@@ -16,32 +16,27 @@
 	class="flex h-full flex-col overflow-hidden rounded-lg border bg-card text-card-foreground transition-all duration-300 ease-out hover:shadow-lg"
 >
 	{#if href}
-		<a href={href} class="block cursor-pointer">
-			{#if image}
-				<img
-					class="pointer-events-none mx-auto h-40 w-full object-cover object-top"
-					src={image}
-					alt={title}
-					loading="lazy"
-				/>
-			{:else if video}
-				<video
-					class="pointer-events-none mx-auto h-40 w-full object-cover object-top"
-					src={video}
-					autoplay
-					loop
-					muted
-				></video>
-			{:else}
-				<div
-					class="flex h-40 w-full items-center justify-center bg-muted text-sm text-muted-foreground"
-					aria-hidden="true"
-				>
-					Screenshot coming soon
-				</div>
-			{/if}
-		</a>
-	{:else}
+		{#if image || video}
+			<a href={href} class="block cursor-pointer">
+				{#if image}
+					<img
+						class="pointer-events-none mx-auto h-40 w-full object-cover object-top"
+						src={image}
+						alt={title}
+						loading="lazy"
+					/>
+				{:else if video}
+					<video
+						class="pointer-events-none mx-auto h-40 w-full object-cover object-top"
+						src={video}
+						autoplay
+						loop
+						muted
+					></video>
+				{/if}
+			</a>
+		{/if}
+	{:else if image || video}
 		<div class="block">
 			{#if image}
 				<img
@@ -58,13 +53,6 @@
 					loop
 					muted
 				></video>
-			{:else}
-				<div
-					class="flex h-40 w-full items-center justify-center bg-muted text-sm text-muted-foreground"
-					aria-hidden="true"
-				>
-					Screenshot coming soon
-				</div>
 			{/if}
 		</div>
 	{/if}

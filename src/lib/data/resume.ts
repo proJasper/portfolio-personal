@@ -13,7 +13,6 @@ import AvansImg from '$lib/imgs/avans.jpg';
 import FontysImg from '$lib/imgs/fontys.jpeg';
 import SummaImg from '$lib/imgs/summa.png';
 import MeImg from '$lib/imgs/me-cropped.jpg';
-import EnginImg from '$lib/imgs/projects/engin.png';
 
 export let DATA = {
 	name: 'Jasper Robinson',
@@ -163,12 +162,19 @@ export let DATA = {
 	],
 	projects: [
 		{
+			title: 'Koolog',
+			href: '',
+			description:
+				'Procurement platform that forecasts and surfaces potential product availability shortages, and autonomously reschedules sales orders to mitigate them.',
+			technologies: ['React', 'TypeScript', 'Python', 'Azure SQL', 'Kafka', 'Docker', 'GitHub Actions'],
+			links: []
+		},
+		{
 			title: 'ENGIN',
 			href: '',
 			description:
-				'Shopify backend that processes webshop orders and forwards them to a third-party fulfilment API, with dashboards for stats, orders, products, refunds, and cancellations.',
+				'E-commerce backend that processes webshop orders and forwards them to a third-party fulfilment API, with dashboards for stats, orders, products, refunds, and cancellations.',
 			technologies: ['Laravel', 'React', 'PostgreSQL', 'Redis', 'Docker', 'GitHub Actions'],
-			image: EnginImg,
 			links: []
 		}
 	],
