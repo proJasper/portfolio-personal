@@ -14,6 +14,10 @@ import FontysImg from '$lib/imgs/fontys.jpeg';
 import SummaImg from '$lib/imgs/summa.png';
 import MeImg from '$lib/imgs/me-cropped.jpg';
 
+import KoologUiImg from '$lib/imgs/projects/koolog-ui.png';
+import KoologLogoImg from '$lib/imgs/projects/koolog-logo.png';
+import EnginLogoImg from '$lib/imgs/projects/engin-logo.png';
+
 export let DATA = {
 	name: 'Jasper Robinson',
 	initials: 'JR',
@@ -164,17 +168,47 @@ export let DATA = {
 		{
 			title: 'Koolog',
 			href: '',
+			dates: '2023 - Now',
 			description:
 				'Procurement platform that forecasts and surfaces potential product availability shortages, and autonomously reschedules sales orders to mitigate them.',
-			technologies: ['React', 'TypeScript', 'Python', 'Azure SQL', 'Kafka', 'Docker', 'GitHub Actions'],
+			longDescription:
+				'Koolog sits on top of the existing ERP and continuously ingests procurement, inventory, and sales-order data through Kafka. A forecasting service projects stock levels forward and flags SKUs that are on track to run short. When a shortage is detected, the platform automatically evaluates the affected sales orders and reschedules delivery dates against the earliest realistic supply date, keeping planners informed via a React dashboard.',
+			problem:
+				'Planners were manually reconciling stock, lead times, and open sales orders across multiple systems. Shortages typically surfaced only after they had already caused missed delivery dates.',
+			solution:
+				'A unified procurement platform that streams data from the ERP into a forecasting engine, surfaces at-risk SKUs before they become critical, and closes the loop by proposing (and, where safe, applying) sales-order rescheduling.',
+			impact:
+				'Cut manual shortage-tracking time significantly and reduced late deliveries by catching shortages earlier in the planning horizon.',
+			technologies: [
+				'React',
+				'TypeScript',
+				'Python',
+				'Azure SQL',
+				'Kafka',
+				'Docker',
+				'GitHub Actions'
+			],
+			screenshots: [KoologUiImg],
+			image: KoologLogoImg,
 			links: []
 		},
 		{
 			title: 'ENGIN',
 			href: '',
+			dates: '2020 - 2024',
 			description:
 				'E-commerce backend that processes webshop orders and forwards them to a third-party fulfilment API, with dashboards for stats, orders, products, refunds, and cancellations.',
+			longDescription:
+				'ENGIN is the operational backend behind a set of webshops. It receives orders from the storefront, validates and enriches them, and forwards them to a third-party fulfilment API. On top of that, it exposes a React dashboard for the operations team covering live order status, product catalogue, refunds, cancellations, and revenue statistics.',
+			problem:
+				'The webshops relied on manual, spreadsheet-driven workflows to hand orders off to the fulfilment partner. Refunds and cancellations were slow, error-prone, and hard to audit.',
+			solution:
+				'A Laravel service that owns the order lifecycle end-to-end: it queues orders, retries against the fulfilment API, and reconciles state changes. A dedicated dashboard gives the operations team a single view of stats, orders, products, refunds, and cancellations.',
+			impact:
+				'Removed the manual handoff between storefront and fulfilment, shortened refund/cancellation cycles from days to minutes, and made revenue and order health observable in real time.',
 			technologies: ['Laravel', 'React', 'PostgreSQL', 'Redis', 'Docker', 'GitHub Actions'],
+			screenshots: [EnginLogoImg],
+			image: EnginLogoImg,
 			links: []
 		}
 	],
