@@ -1,6 +1,7 @@
 <script>
 	import BlurFade from '$lib/components/magic/BlurFade.svelte';
 	import ProjectCard from '$lib/components/portfolio/ProjectCard.svelte';
+	import ProjectDrawer from '$lib/components/portfolio/ProjectDrawer.svelte';
 	import ResumeCard from '$lib/components/portfolio/ResumeCard.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import * as Avatar from '$lib/components/ui/avatar';
@@ -9,6 +10,14 @@
 	import { personJsonLd, websiteJsonLd } from '$lib/seo';
 	import { marked } from 'marked';
 	let BLUR_FADE_DELAY = 0.04;
+
+	let drawerOpen = false;
+	let selectedProject = null;
+
+	function openProject(project) {
+		selectedProject = project;
+		drawerOpen = true;
+	}
 </script>
 
 <Seo
@@ -125,19 +134,19 @@
 				{#each DATA.projects as project, id}
 					<BlurFade delay={BLUR_FADE_DELAY * 1.2 + id * 0.05}>
 						<ProjectCard
-							href={project.href}
 							title={project.title}
 							description={project.description}
-							dates={project.dates ?? ''}
 							tags={project.technologies}
 							image={project.image}
 							links={project.links ?? []}
+							on:click={() => openProject(project)}
 						/>
 					</BlurFade>
 				{/each}
 			</div>
 		</div>
 	</section>
+	<ProjectDrawer bind:open={drawerOpen} project={selectedProject} />
 	<section id="contact">
 		<div class="flex min-h-0 flex-col gap-y-3">
 			<BlurFade delay={BLUR_FADE_DELAY}>
