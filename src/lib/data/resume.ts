@@ -16,7 +16,6 @@ import MeImg from '$lib/imgs/me-cropped.jpg';
 
 import KoologUiImg from '$lib/imgs/projects/koolog-ui.png';
 import KoologLogoImg from '$lib/imgs/projects/koolog-logo.png';
-import EnginLogoImg from '$lib/imgs/projects/engin-logo.png';
 
 export let DATA = {
 	name: 'Jasper Robinson',
@@ -89,13 +88,24 @@ export let DATA = {
 			href: '',
 			badges: [],
 			location: '',
-			title: 'Ops Support Agent - Advanced',
 			logoUrl: FedExImg,
 			logoClass: 'scale-75',
-			start: 'Jul 2024',
-			end: 'Now',
-			description:
-				'Supporting customs clearance operations in the Netherlands by enhancing compliance through process improvements and the implementation of tools that increase efficiency and accuracy.'
+			roles: [
+				{
+					title: 'Automation & AI Engineer',
+					start: 'Oct 2026',
+					end: 'Now',
+					description:
+						'Leading automation and AI initiatives for Global Trade Services Europe, using RPA and intelligent systems to strengthen customs compliance, streamline processes and improve operational efficiency across the region.'
+				},
+				{
+					title: 'Ops Support Agent - Advanced',
+					start: 'Jul 2024',
+					end: 'Sep 2026',
+					description:
+						'Managed customs declarations and transit procedures as a broker while supporting clearance operations in the Netherlands through compliant, accurate and efficient processes.'
+				}
+			]
 		},
 		{
 			company: 'Bluespace Holding',
@@ -104,7 +114,7 @@ export let DATA = {
 			location: '',
 			title: 'Founder & CEO',
 			logoUrl: BluespaceImg,
-			logoClass: 'scale-75',
+			logoClass: 'scale-[0.68]',
 			start: 'Dec 2019',
 			end: 'Dec 2024',
 			description:
@@ -130,7 +140,7 @@ export let DATA = {
 			location: '',
 			title: 'Industrial Engineer (Graduation Project)',
 			logoUrl: PhilipsImg,
-			logoClass: 'scale-75',
+			logoClass: 'scale-[0.68]',
 			start: 'Feb 2021',
 			end: 'Sep 2021',
 			description:
@@ -140,7 +150,6 @@ export let DATA = {
 	education: [
 		{
 			school: 'Avans University of Applied Sciences',
-			href: 'https://www.avans.nl',
 			degree: 'Logistics Management',
 			logoUrl: AvansImg,
 			logoClass: 'scale-75',
@@ -149,7 +158,6 @@ export let DATA = {
 		},
 		{
 			school: 'Fontys University of Applied Sciences',
-			href: 'https://www.fontys.nl',
 			degree: 'Industrial Engineering',
 			logoUrl: FontysImg,
 			start: '2021',
@@ -157,7 +165,6 @@ export let DATA = {
 		},
 		{
 			school: 'Summa College',
-			href: 'https://www.summacollege.nl',
 			degree: 'Intl. Engineering',
 			logoUrl: SummaImg,
 			start: '2017',
@@ -166,11 +173,13 @@ export let DATA = {
 	],
 	projects: [
 		{
+			slug: 'koolog',
 			title: 'Koolog',
 			href: '',
 			dates: '2023 - Now',
 			description:
 				'Procurement platform that forecasts and surfaces potential product availability shortages, and autonomously reschedules sales orders to mitigate them.',
+			achievements: [{ value: '50%', label: 'less manual sales-order rescheduling' }],
 			longDescription:
 				'Koolog sits on top of the existing ERP and continuously ingests procurement, inventory, and sales-order data through Kafka. A forecasting service projects stock levels forward and flags SKUs that are on track to run short. When a shortage is detected, the platform automatically evaluates the affected sales orders and reschedules delivery dates against the earliest realistic supply date, keeping planners informed via a React dashboard.',
 			problem:
@@ -193,11 +202,13 @@ export let DATA = {
 			links: []
 		},
 		{
+			slug: 'engin',
 			title: 'ENGIN',
 			href: '',
 			dates: '2020 - 2024',
 			description:
 				'E-commerce backend that processes webshop orders and forwards them to a third-party fulfilment API, with dashboards for stats, orders, products, refunds, and cancellations.',
+			achievements: [{ value: '15%', label: 'efficiency increase' }],
 			longDescription:
 				'ENGIN is the operational backend behind a set of webshops. It receives orders from the storefront, validates and enriches them, and forwards them to a third-party fulfilment API. On top of that, it exposes a React dashboard for the operations team covering live order status, product catalogue, refunds, cancellations, and revenue statistics.',
 			problem:
@@ -207,8 +218,7 @@ export let DATA = {
 			impact:
 				'Removed the manual handoff between storefront and fulfilment, shortened refund/cancellation cycles from days to minutes, and made revenue and order health observable in real time.',
 			technologies: ['Laravel', 'React', 'PostgreSQL', 'Redis', 'Docker', 'GitHub Actions'],
-			screenshots: [EnginLogoImg],
-			image: EnginLogoImg,
+			screenshots: [],
 			links: []
 		}
 	],
