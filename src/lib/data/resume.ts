@@ -92,9 +92,16 @@ export let DATA = {
 			logoClass: 'scale-75',
 			roles: [
 				{
+					title: 'Automation & AI Engineer',
+					start: 'Oct 2026',
+					end: 'Now',
+					description:
+						'Leading automation and AI initiatives for Global Trade Services Europe, using RPA and intelligent systems to strengthen customs compliance, streamline processes and improve operational efficiency across the region.'
+				},
+				{
 					title: 'Ops Support Agent - Advanced',
 					start: 'Jul 2024',
-					end: 'Now',
+					end: 'Sep 2026',
 					description:
 						'Managed customs declarations and transit procedures as a broker while supporting clearance operations in the Netherlands through compliant, accurate and efficient processes.'
 				}
