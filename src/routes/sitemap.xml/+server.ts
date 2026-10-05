@@ -1,4 +1,5 @@
 import { getPosts } from '$lib/content/posts';
+import { DATA } from '$lib/data/resume';
 import { SITE_URL } from '$lib/seo';
 import type { RequestHandler } from './$types';
 
@@ -15,6 +16,11 @@ export const GET: RequestHandler = async () => {
 	const posts = getPosts();
 	const pages = [
 		{ loc: `${SITE_URL}/`, lastmod: new Date().toISOString() },
+		{ loc: `${SITE_URL}/rocketeer`, lastmod: new Date().toISOString() },
+		...DATA.projects.map((project) => ({
+			loc: `${SITE_URL}/projects/${project.slug}`,
+			lastmod: new Date().toISOString()
+		})),
 		{ loc: `${SITE_URL}/blog`, lastmod: new Date().toISOString() },
 		...posts.map((post) => ({
 			loc: `${SITE_URL}/blog/${post.slug}`,
