@@ -1,8 +1,10 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import RocketeerLogo from '$lib/components/portfolio/RocketeerLogo.svelte';
+	import { DATA } from '$lib/data/resume';
 	import {
-		ArrowRight,
+		ArrowUpRight,
 		Boxes,
 		Code2,
 		Mail,
@@ -16,12 +18,22 @@
 	} from 'lucide-svelte';
 
 	const contactUrl =
-		'mailto:contact@jasperrobinson.nl?subject=Rocketeer%20project%20inquiry';
+		'mailto:projecten@jasperrobinson.nl?subject=Rocketeer%20project%20inquiry';
 
-	function scrollToSection(event: MouseEvent, id: string) {
-		event.preventDefault();
+	function scrollToSection(id: string) {
 		document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	}
+
+	onMount(() => {
+		const section = sessionStorage.getItem('rocketeer-section') ?? window.location.hash.slice(1);
+		if (window.location.hash) {
+			history.replaceState(history.state, '', `${window.location.pathname}${window.location.search}`);
+		}
+		if (!section) return;
+
+		sessionStorage.removeItem('rocketeer-section');
+		requestAnimationFrame(() => scrollToSection(section));
+	});
 
 	const services = [
 		{
@@ -77,24 +89,6 @@
 		}
 	];
 
-	const process = [
-		{
-			title: 'Understand the operation',
-			description: 'We look at the people, systems and decisions involved in the current process.'
-		},
-		{
-			title: 'Define the right solution',
-			description: 'The requirements and priorities become a practical plan with a clear first release.'
-		},
-		{
-			title: 'Build in close contact',
-			description: 'You see progress early and often, so feedback shapes the product while it is being built.'
-		},
-		{
-			title: 'Launch and improve',
-			description: 'The solution is introduced carefully, measured in use and improved where it adds value.'
-		}
-	];
 </script>
 
 <Seo
@@ -102,32 +96,34 @@
 	description="Rocketeer helps businesses identify operational needs and builds custom software, including webshops, warehouse management systems and procurement platforms."
 	canonical="/rocketeer"
 	siteName="Rocketeer"
+	icon="/rocketeer-icon.svg"
 />
 
 <main class="relative left-1/2 w-[calc(100vw-3rem)] max-w-5xl -translate-x-1/2">
-	<header class="sticky top-4 z-40 flex h-12 items-center justify-between gap-4 rounded-lg border bg-card/90 px-3 text-card-foreground shadow-sm backdrop-blur-md sm:top-6">
+	<div class="sticky top-0 z-40 -mt-4 pt-4 sm:-mt-6 sm:pt-6">
+		<header class="relative z-10 flex h-12 items-center justify-between gap-4 rounded-lg border bg-card/90 px-3 text-card-foreground shadow-[0_6px_12px_-10px_rgba(0,0,0,0.45)] backdrop-blur-md">
 			<a href="/rocketeer" class="inline-flex items-center gap-2 text-sm font-semibold">
 				<RocketeerLogo className="size-8" />
 				Rocketeer
 			</a>
 
 			<nav class="hidden items-center gap-6 text-xs font-medium text-muted-foreground sm:flex" aria-label="Rocketeer navigation">
-				<a
-					href="#build"
+				<button
+					type="button"
 					class="transition-colors hover:text-foreground"
-					on:click={(event) => scrollToSection(event, 'build')}>What we build</a
+					on:click={() => scrollToSection('build')}>What we build</button
 				>
-				<a
-					href="#services"
+				<button
+					type="button"
 					class="transition-colors hover:text-foreground"
-					on:click={(event) => scrollToSection(event, 'services')}>Services</a
+					on:click={() => scrollToSection('services')}>Services</button
 				>
-				<a
-					href="#process"
+				<button
+					type="button"
 					class="transition-colors hover:text-foreground"
-					on:click={(event) => scrollToSection(event, 'process')}>Process</a
+					on:click={() => scrollToSection('projects')}>Projects</button
 				>
-				<a href="/" class="transition-colors hover:text-foreground">About Jasper</a>
+				<a href="/" class="transition-colors hover:text-foreground">About</a>
 			</nav>
 
 			<a
@@ -136,52 +132,23 @@
 			>
 				Discuss a project
 			</a>
-		</header>
-
-	<section
-		class="relative mt-4 min-h-[32rem] overflow-hidden rounded-lg border border-white/10 bg-[#172554] sm:min-h-[30rem]"
-		style="background: linear-gradient(135deg, #0f1f4b 0%, #283593 48%, #6d28d9 100%);"
-	>
-		<div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-			<div
-				class="absolute -right-40 -top-72 h-[36rem] w-[76rem] -rotate-12 rounded-[50%] border-[5rem] border-white/10"
-			></div>
-			<div
-				class="absolute -left-52 top-16 h-[30rem] w-[72rem] rotate-[18deg] rounded-[50%] border-[3.5rem] border-cyan-300/15"
-			></div>
-			<div
-				class="absolute -bottom-80 -right-24 h-[38rem] w-[68rem] rotate-[8deg] rounded-[50%] border-[6rem] border-fuchsia-300/10"
-			></div>
-			<div class="absolute inset-0 bg-black/10"></div>
+			</header>
 		</div>
 
-		<div class="relative flex min-h-[32rem] flex-col justify-end p-6 pb-12 text-white sm:min-h-[30rem] sm:p-10 sm:pb-20">
-			<div class="max-w-2xl space-y-5">
+	<section
+		class="rocketeer-gradient relative mt-4 min-h-[18rem] overflow-hidden rounded-lg border border-white/10 bg-[#172554]"
+	>
+		<div class="relative flex min-h-[18rem] flex-col justify-center p-6 text-white sm:p-10">
+			<div class="max-w-2xl">
 				<div class="space-y-3">
 					<h1 class="sr-only">Rocketeer</h1>
-					<p class="max-w-xl text-xl font-medium leading-snug text-white sm:text-2xl">
+					<p class="max-w-xl text-2xl font-bold text-white sm:text-3xl">
 						Custom software for businesses with real operational challenges.
 					</p>
 					<p class="max-w-xl text-pretty text-sm leading-relaxed text-white/75 sm:text-base">
 						I help businesses understand what they need, then design and build the solution,
 						from webshops and warehouse systems to procurement platforms and internal tools.
 					</p>
-				</div>
-
-				<div class="flex flex-wrap gap-2">
-					<a
-						href={contactUrl}
-						class="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-white px-4 text-sm font-medium text-zinc-950 transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
-					>
-						Discuss a project
-						<ArrowRight class="size-4" />
-					</a>
-					<a
-						href="/"
-						class="inline-flex h-10 items-center justify-center rounded-md border border-white/30 px-4 text-sm font-medium text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-					>
-						About Jasper
-					</a>
 				</div>
 			</div>
 		</div>
@@ -199,16 +166,16 @@
 
 		<div class="grid gap-px overflow-hidden rounded-lg border bg-border sm:grid-cols-2 lg:grid-cols-3">
 			{#each capabilities as capability}
-				<article class="min-h-44 space-y-4 bg-background p-5 sm:p-6">
-					<div class="flex size-9 items-center justify-center rounded-md bg-secondary">
-						<svelte:component this={capability.icon} class="size-4" strokeWidth={1.7} />
-					</div>
-					<div class="space-y-1.5">
+				<article class="min-h-40 bg-background p-5 sm:p-6">
+					<div class="flex items-center gap-3">
+						<div class="flex size-9 items-center justify-center rounded-md bg-secondary">
+							<svelte:component this={capability.icon} class="size-4" strokeWidth={1.7} />
+						</div>
 						<h3 class="text-sm font-semibold">{capability.title}</h3>
-						<p class="text-pretty text-sm leading-relaxed text-muted-foreground">
-							{capability.description}
-						</p>
 					</div>
+					<p class="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground">
+						{capability.description}
+					</p>
 				</article>
 			{/each}
 		</div>
@@ -224,17 +191,15 @@
 		</div>
 
 		<div class="grid gap-3 sm:grid-cols-3">
-			{#each services as service, index}
-				<article class="relative min-h-64 overflow-hidden rounded-lg border bg-card p-6 text-card-foreground">
-					<div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 to-violet-500"></div>
-					<div class="flex items-start justify-between">
+			{#each services as service}
+				<article class="relative min-h-48 overflow-hidden rounded-lg border bg-card p-6 text-card-foreground">
+					<div class="flex items-center gap-3">
 						<div class="flex size-10 items-center justify-center rounded-md bg-secondary">
 							<svelte:component this={service.icon} class="size-5" strokeWidth={1.7} />
 						</div>
-						<span class="text-xs tabular-nums text-muted-foreground">0{index + 1}</span>
-					</div>
-					<div class="mt-10 space-y-2">
 						<h3 class="text-lg font-semibold">{service.title}</h3>
+					</div>
+					<div class="mt-5">
 						<p class="text-pretty text-sm leading-relaxed text-muted-foreground">
 							{service.description}
 						</p>
@@ -244,30 +209,55 @@
 		</div>
 	</section>
 
-	<section id="process" class="mt-16 scroll-mt-20 space-y-8">
+	<section id="projects" class="mt-16 scroll-mt-20 space-y-6">
 		<div class="max-w-xl space-y-2">
-			<p class="text-xs font-semibold uppercase text-muted-foreground">The process</p>
-			<h2 class="text-2xl font-bold sm:text-3xl">How we work together</h2>
+			<p class="text-xs font-semibold uppercase text-muted-foreground">Latest projects</p>
+			<h2 class="text-2xl font-bold sm:text-3xl">Built for the work behind the business</h2>
 			<p class="text-pretty text-sm leading-relaxed text-muted-foreground">
-				A clear path from the first conversation to software your team can rely on.
+				Recent systems designed to make complex operational work clearer, faster and more reliable.
 			</p>
 		</div>
 
-		<ol class="relative grid gap-8 before:absolute before:left-0 before:right-0 before:top-5 before:hidden before:h-px before:bg-border sm:grid-cols-4 sm:gap-6 sm:before:block">
-			{#each process as step, index}
-				<li class="relative grid grid-cols-[2.5rem_1fr] gap-4 sm:block">
-					<span class="relative z-10 flex size-10 items-center justify-center rounded-full border bg-background text-xs font-semibold tabular-nums">
-						0{index + 1}
-					</span>
-					<div class="space-y-2 sm:mt-5">
-						<h3 class="text-sm font-semibold">{step.title}</h3>
-						<p class="text-pretty text-sm leading-relaxed text-muted-foreground">
-						{step.description}
+		<div class="grid gap-4 sm:grid-cols-2">
+			{#each DATA.projects as project}
+				<a
+					href="/rocketeer/projects/{project.slug}"
+					class="group block overflow-hidden rounded-lg border bg-card text-card-foreground transition-colors hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+				>
+					<div class="flex min-h-56 flex-col p-5 sm:p-6">
+						<div class="flex items-start justify-between gap-4">
+							<h3 class="text-xl font-semibold">{project.title}</h3>
+							{#if project.achievements[0]}
+								<p class="flex items-baseline gap-1.5 text-right text-[9px] leading-tight text-muted-foreground sm:text-[10px]">
+									<strong class="shrink-0 text-base font-semibold text-foreground">
+										{project.achievements[0].value}
+									</strong>
+									<span>{project.achievements[0].label}</span>
+								</p>
+							{/if}
+						</div>
+
+						<p class="mt-3 text-pretty text-sm leading-relaxed text-muted-foreground">
+							{project.description}
 						</p>
+
+						<div class="mt-auto flex flex-wrap items-center justify-between gap-3 pt-4">
+							<div class="flex flex-wrap gap-1.5">
+								{#each project.technologies.slice(0, 4) as technology}
+									<span class="rounded bg-secondary px-2 py-1 text-[10px] font-medium text-secondary-foreground">
+										{technology}
+									</span>
+								{/each}
+							</div>
+							<span class="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold transition-colors group-hover:text-muted-foreground">
+								View case study
+								<ArrowUpRight class="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+							</span>
+						</div>
 					</div>
-				</li>
+				</a>
 			{/each}
-		</ol>
+		</div>
 	</section>
 
 	<section id="contact" class="mt-16 flex scroll-mt-20 flex-col gap-5 border-y py-8 sm:flex-row sm:items-center sm:justify-between">
@@ -287,8 +277,4 @@
 		</a>
 	</section>
 
-	<footer class="mt-16 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
-		<span>Rocketeer · Custom business software</span>
-		<a href="/" class="font-medium transition-colors hover:text-foreground">jasperrobinson.nl</a>
-	</footer>
 </main>

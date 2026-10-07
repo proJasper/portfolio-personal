@@ -16,12 +16,12 @@
 <GoogleAnalytics />
 <div
 	class="relative mx-auto min-h-screen max-w-2xl bg-background px-6 font-sans antialiased {$page.url.pathname ===
-	'/rocketeer'
+	'/rocketeer' || $page.url.pathname.startsWith('/rocketeer/')
 		? 'pb-16 pt-4 sm:pb-20 sm:pt-6'
 		: 'pb-28 pt-12 sm:py-24 sm:pb-32'}"
 >
 	<slot></slot>
-	{#if $page.url.pathname !== '/rocketeer'}
+	{#if !$page.url.pathname.startsWith('/rocketeer')}
 		<Navbar />
 	{/if}
 </div>

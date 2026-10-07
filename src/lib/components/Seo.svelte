@@ -8,6 +8,7 @@
 	export let siteName: string = DATA.name;
 	export let ogType: 'website' | 'article' = 'website';
 	export let ogImage: string = '/og.jpg';
+	export let icon: string | null = null;
 	export let jsonLd: Record<string, unknown> | Record<string, unknown>[] | null = null;
 
 	$: canonicalUrl = absoluteUrl(canonical);
@@ -18,6 +19,9 @@
 <svelte:head>
 	<title>{title}</title>
 	<link rel="canonical" href={canonicalUrl} />
+	{#if icon}
+		<link rel="icon" type="image/svg+xml" href={icon} />
+	{/if}
 	<meta name="description" content={description} />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />

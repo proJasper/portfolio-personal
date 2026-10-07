@@ -18,7 +18,7 @@ export const GET: RequestHandler = async () => {
 		{ loc: `${SITE_URL}/`, lastmod: new Date().toISOString() },
 		{ loc: `${SITE_URL}/rocketeer`, lastmod: new Date().toISOString() },
 		...DATA.projects.map((project) => ({
-			loc: `${SITE_URL}/projects/${project.slug}`,
+			loc: `${SITE_URL}/rocketeer/projects/${project.slug}`,
 			lastmod: new Date().toISOString()
 		})),
 		{ loc: `${SITE_URL}/blog`, lastmod: new Date().toISOString() },

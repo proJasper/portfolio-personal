@@ -92,7 +92,7 @@ export let DATA = {
 			logoClass: 'scale-75',
 			roles: [
 				{
-					title: 'Automation & AI Engineer',
+					title: 'Industrial Engineer - Associate',
 					start: 'Nov 2026',
 					end: 'Now',
 					description:

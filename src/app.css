@@ -57,4 +57,26 @@
 	}
 }
 
+@keyframes rocketeer-gradient-shift {
+	0%,
+	100% {
+		background-position: 0% 45%;
+	}
+	50% {
+		background-position: 100% 55%;
+	}
+}
+
+.rocketeer-gradient {
+	background: linear-gradient(135deg, #0f1f4b 0%, #283593 48%, #6d28d9 85%, #7e22ce 100%);
+	background-size: 150% 150%;
+	animation: rocketeer-gradient-shift 16s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.rocketeer-gradient {
+		animation: none;
+	}
+}
+
 
